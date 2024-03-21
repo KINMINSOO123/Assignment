@@ -1,4 +1,5 @@
 <?php 
+session_start();
 function detectError()
 {
     // Use the global variables.
@@ -113,6 +114,10 @@ if(isset($_POST['submit'])){
                     echo "<div class='message'>
                     <p>Account Created Successfully!</p>
                 </div> <br>";
+                    $_SESSION['valid-admin'] = $adminId;
+                    $_SESSION['user-name'] = $fName + " " + $lName;
+                    $_SESSION['email'] = $email;
+                    $_SESSION['password'] = $password;
                     echo "<a href='index.php'><button class='btn'>Go to Home</button>";
                 } else {
                     echo "<div class='message'>
@@ -181,7 +186,7 @@ if(isset($_POST['submit'])){
                         </form>
                     </div>
                     <div class="card-footer text-center py-3">
-                        <div class="small"><a href="login.html">Have an account? Go to login</a></div>
+                        <div class="small"><a href="login.php">Have an account? Go to login</a></div>
                     </div>
                 </div>
             </div>
